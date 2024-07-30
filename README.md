@@ -2,7 +2,7 @@
 
 Welcome to **The Brawl 2023 - Trader21** repository! This project is part of a trading competition aiming to implement and test various trading strategies. Below, you'll find an overview of the repository, setup instructions, and details on how to contribute.
 
-## Project Overview
+## Project Overview - Trading Bot
 
 The Brawl 2023 is a trading competition where participants create and optimize trading algorithms to achieve the best performance. The goal of participants was to maximise profits by trading BTC and ETH. This repository contains the code and resources for Trader21's entry in the competition.
 
@@ -17,3 +17,4 @@ We rigorously tested various approaches before settling on the EMA. Here's an ov
 2. Robustness: Strategies were tested across different market conditions and asset classes to ensure robustness and adaptability.
 3. Parameter Optimization: For each hyperparameter (alpha, max limit, min time between 2 consequtive trades), we performed optimization to identify the settings that yielded the best results.
 
+The trading bot reads prices from Coinbase and upon each update it makes the decision to BUY/SELL/HOLD and sets the amount to trade.
