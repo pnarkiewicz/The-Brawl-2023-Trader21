@@ -1,17 +1,33 @@
-Wrzućcie .env file z
+# The Brawl 2023 - Trader21
 
-API_KEY = "AIzaSyBOEvN4OzAePlFp1fSRKWJlioA9r2WPZHw"
+Welcome to **The Brawl 2023 - Trader21** repository! This project is part of a trading competition aiming to implement and test various trading strategies. Below, you'll find an overview of the repository, setup instructions, and details on how to contribute.
 
-AUTH_URL = "https://www.googleapis.com/identitytoolkit/v3/relyingparty/verifyPassword"
+## Table of Contents
 
-ACCOUNT_ID = "11143c00-d7f6-4434-b786-469b81c6718b"
+- [Project Overview](#project-overview)
+- [Repository Structure](#repository-structure)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-USD_WALLET_ID = "333fa6fb-be52-4adb-8913-6b0f7ba5dc18"
+## Project Overview
 
-ETH_WALLET_ID = "84d3f04b-e724-489e-8a78-0182e901c184"
+The Brawl 2023 is a trading competition where participants create and optimize trading algorithms to achieve the best performance. This repository contains the code and resources for Trader21's entry in the competition.
 
-BTC_WALLET_ID = "a9335f98-e16b-440c-837b-c7be62520cd7"
+## Repository Structure
 
-EMAIL = ""
-
-PASSWORD = ""
+The repository is organized as follows:
+The-Brawl-2023-Trader21/
+├── data/
+│ ├── raw/ # Raw data files
+│ └── processed/ # Processed data files
+├── notebooks/ # Jupyter notebooks for data exploration and analysis
+├── src/ # Source code for the trading strategies
+│ ├── strategies/ # Different trading strategies implemented
+│ ├── utils/ # Utility functions and helpers
+│ └── main.py # Main script to run the trading algorithm
+├── tests/ # Unit tests for the project
+├── requirements.txt # Python dependencies
+└── README.md # Project README file
