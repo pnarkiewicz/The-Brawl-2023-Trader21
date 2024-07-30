@@ -19,18 +19,20 @@ SELL = False
 class Trader:
     def __init__(self, token, size, alpha, delta, print):
         self.token = token
-        self.size = size
+        self.timestep = 60
+        self.opened_positions = []
+        self.id_position = 0
+        self.all_profit = 0
+        self.spread = 0.01
+
         self.alpha = alpha
         self.delta = delta
+
         self.total_btc = 0
-        self.money = 2000000
-        self.max_buy = self.money / 2
-        self.all_profit = 0
-        self.profits = []
-        self.data = []
-        self.keys = ["Epoch", "BTC_price", "ETH_price"]
+        self.money = 1000000
+        self.max_buy = 1000
+
         self.btc_prices = []
-        self.all_btc_prices = []
         self.ema_values = np.array([(1 - self.alpha) ** i for i in range(self.size)])
         self.sum_ema_values = np.sum(self.ema_values)
         self.last_buy = 0
@@ -44,30 +46,20 @@ class Trader:
 
         while True:
             self.single_trading_loop()
-        sell_btc_none(self.total_btc, self.token)
-        return self.get_current_stats()
 
     def single_trading_loop(self):
         self.update_btc_price()
         self.execute_trade()
 
-    # def update_prices(self):
-    #     new_data = read_off_crypto_data(make_multiple_requests(urls))
-
-    #     if len(self.data) == 0 or new_data["Epoch"] != self.data[-1]["Epoch"]:
-    #         self.data.append(new_data)
-    #         if len(self.data) > self.size:
-    #             self.data.pop(0)
-
     def update_btc_price(self):
         new_btc_price = read_btc_price()
+        now = datetime.now()
+        time_diff = (self.btc_prices[-1][1] - now).total_seconds()
+
         if len(self.btc_prices) == 0 or (
-            new_btc_price > 0 and new_btc_price != self.btc_prices[-1]
+            new_btc_price > 0 and time_diff > self.timestep
         ):
-            self.btc_prices.append(new_btc_price)
-            # self.all_btc_prices.append(new_btc_price)
-        if len(self.btc_prices) > self.size:
-            self.btc_prices.pop(0)
+            self.btc_prices.append([new_btc_price, now])
 
     def get_decision(self):
         ema = np.sum(self.btc_prices * self.ema_values) / self.sum_ema_values
@@ -92,6 +84,8 @@ class Trader:
             if buy:
                 self.total_btc += volume
                 self.last_buy += price * volume
+                self.opened_positions.append([volume, price, self.id_position])
+                self.id_position += 1
                 # print(f"Bought {volume} BTC for {price}")
         elif decision == SELL:
             real_price, sell = sell_btc_none(volume, self.token)
@@ -119,5 +113,5 @@ class Trader:
         }
 
 
-trader = Trader(id_token, 15, 0.3, 3, True)
-stats = trader.trade(1e4)
+# trader = Trader(id_token, 15, 0.3, 3, True)
+# stats = trader.trade(1e4)
