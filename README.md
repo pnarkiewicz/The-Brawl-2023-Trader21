@@ -19,15 +19,17 @@ The Brawl 2023 is a trading competition where participants create and optimize t
 ## Repository Structure
 
 The repository is organized as follows:
+
 The-Brawl-2023-Trader21/
-├── data/
-│ ├── raw/ # Raw data files
-│ └── processed/ # Processed data files
-├── notebooks/ # Jupyter notebooks for data exploration and analysis
-├── src/ # Source code for the trading strategies
-│ ├── strategies/ # Different trading strategies implemented
-│ ├── utils/ # Utility functions and helpers
-│ └── main.py # Main script to run the trading algorithm
-├── tests/ # Unit tests for the project
-├── requirements.txt # Python dependencies
-└── README.md # Project README file
+- **data/**
+  - **raw/**: Raw data files
+  - **processed/**: Processed data files
+- **notebooks/**: Jupyter notebooks for data exploration and analysis
+- **src/**: Source code for the trading strategies
+  - **strategies/**: Different trading strategies implemented
+  - **utils/**: Utility functions and helpers
+  - **main.py**: Main script to run the trading algorithm
+- **tests/**: Unit tests for the project
+- **requirements.txt**: Python dependencies
+- **README.md**: Project README file
+
